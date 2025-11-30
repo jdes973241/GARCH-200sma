@@ -1,0 +1,41 @@
+{
+  "updated_at": "2025-11-30 15:20:01 UTC",
+  "data": [
+    {
+      "ticker": "UPRO",
+      "date": "2025-11-28",
+      "price": 117.13,
+      "z_score": 1.54,
+      "is_above_sma": true,
+      "sma_price": 91.95,
+      "garch_signal": "持有",
+      "sma_signal": "持有",
+      "final_decision": "持有 100%",
+      "thresholds": "GARCH(Exit>2.0, Entry<1.0)"
+    },
+    {
+      "ticker": "EURL",
+      "date": "2025-11-28",
+      "price": 37.58,
+      "z_score": 2.02,
+      "is_above_sma": true,
+      "sma_price": 32.43,
+      "garch_signal": "持有",
+      "sma_signal": "持有",
+      "final_decision": "持有 100%",
+      "thresholds": "GARCH(Exit>3.75, Entry<1.75)"
+    },
+    {
+      "ticker": "EDC",
+      "date": "2025-11-28",
+      "price": 51.82,
+      "z_score": -0.15,
+      "is_above_sma": true,
+      "sma_price": 40.01,
+      "garch_signal": "賣出",
+      "sma_signal": "持有",
+      "final_decision": "持有 50%",
+      "thresholds": "GARCH(Exit>1.75, Entry<-0.25)"
+    }
+  ]
+}
