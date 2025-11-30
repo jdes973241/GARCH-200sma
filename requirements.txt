@@ -1,0 +1,5 @@
+yfinance
+arch
+pandas
+numpy
+scipy
