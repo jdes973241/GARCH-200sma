@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>量化監控</title>
+    <style>
+        :root {
+            --bg-color: #f2f2f7;
+            --card-bg: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #8e8e93;
+            --divider: #e5e5ea;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #000000;
+                --card-bg: #1c1c1e;
+                --text-primary: #ffffff;
+                --text-secondary: #98989d;
+                --divider: #38383a;
+            }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            padding-top: env(safe-area-inset-top);
+        }
+        .header {
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+        .title {
+            font-size: 34px;
+            font-weight: 800;
+            margin: 0;
+        }
+        .status-bar {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .ticker {
+            font-size: 24px;
+            font-weight: 900;
+        }
+        .badge {
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            color: white;
+        }
+        .divider {
+            height: 1px;
+            background-color: var(--divider);
+            margin: 12px 0;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .col {
+            flex: 1;
+        }
+        .col-right {
+            text-align: right;
+            border-left: 1px solid var(--divider);
+            padding-left: 10px;
+        }
+        .label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .value-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .value {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .sub-badge {
+            font-size: 10px;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .sub-text {
+            font-size: 10px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        .reason {
+            font-size: 11px;
+            color: #ff9500;
+            margin-top: 4px;
+            line-height: 1.2;
+        }
+        /* Status Colors */
+        .green { background-color: #34c759; }
+        .orange { background-color: #ff9500; }
+        .red { background-color: #ff3b30; }
+        
+        .text-green { color: #34c759; }
+        .text-red { color: #ff3b30; }
+        
+        .bg-green-light { background-color: rgba(52, 199, 89, 0.15); color: #34c759; }
+        .bg-red-light { background-color: rgba(255, 59, 48, 0.15); color: #ff3b30; }
+        
+        #loading { text-align: center; color: var(--text-secondary); margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="title">量化監控</h1>
+        <div class="status-bar" id="update-time">載入中...</div>
+    </div>
+
+    <div id="loading">正在分析市場數據...</div>
+    <div id="container"></div>
+
+    <script>
+        // ★★★ 請修改這裡：您的 signals.json 網址 ★★★
+        const JSON_URL = 'https://raw.githubusercontent.com/jdes973241/GARCH-200sma/refs/heads/main/signals.json';
+
+        async function fetchData() {
+            try {
+                // 加個時間戳記避免緩存
+                const response = await fetch(JSON_URL + '?t=' + new Date().getTime());
+                const json = await response.json();
+                
+                render(json);
+            } catch (error) {
+                document.getElementById('loading').innerText = "載入失敗，請檢查網路或 GitHub。";
+                console.error(error);
+            }
+        }
+
+        function render(data) {
+            const container = document.getElementById('container');
+            const timeDiv = document.getElementById('update-time');
+            const loading = document.getElementById('loading');
+            
+            loading.style.display = 'none';
+            
+            // 顯示時間
+            const now = new Date();
+            timeDiv.innerHTML = `資料產出: ${data.updated_at}<br>最後檢查: ${now.toLocaleTimeString()}`;
+
+            container.innerHTML = ''; // 清空
+
+            data.data.forEach(item => {
+                // 決定顏色邏輯
+                let mainColorClass = 'red';
+                if (item.final_decision.includes('100%')) mainColorClass = 'green';
+                else if (item.final_decision.includes('50%')) mainColorClass = 'orange';
+
+                const garchColor = item.garch_signal === '持有' ? 'bg-green-light' : 'bg-red-light';
+                const smaColor = item.sma_signal === '持有' ? 'bg-green-light' : 'bg-red-light';
+                const zScoreColor = item.z_score > 2.0 ? 'text-red' : '';
+                const smaPriceColor = item.is_above_sma ? 'text-green' : 'text-red';
+                const smaText = item.is_above_sma ? 'Above' : 'Below';
+
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="ticker">${item.ticker}</div>
+                        <div class="badge ${mainColorClass}">${item.final_decision}</div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="label">GARCH Z-Score</div>
+                            <div class="value-row">
+                                <span class="value ${zScoreColor}">${item.z_score.toFixed(2)}</span>
+                                <span class="sub-badge ${garchColor}">${item.garch_signal}</span>
+                            </div>
+                            ${item.trigger_reason ? `<div class="reason">${item.trigger_reason}</div>` : ''}
+                            <div class="sub-text">${item.thresholds}</div>
+                        </div>
+                        <div class="col col-right">
+                            <div class="label">200 SMA</div>
+                            <div class="value-row" style="justify-content: flex-end;">
+                                <span class="value ${smaPriceColor}">${smaText}</span>
+                                <span class="sub-badge ${smaColor}">${item.sma_signal}</span>
+                            </div>
+                            <div class="sub-text">P: ${item.price.toFixed(1)} / MA: ${item.sma_price.toFixed(1)}</div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // 啟動
+        fetchData();
+        
+        // 下拉刷新邏輯 (簡單版：點擊標題刷新)
+        document.querySelector('.title').onclick = fetchData;
+    </script>
+</body>
+</html>
