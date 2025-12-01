@@ -1,13 +1,13 @@
 {
-  "updated_at": "2025-12-01 02:43:08 UTC",
+  "updated_at": "2025-12-01 22:41:22 UTC",
   "data": [
     {
       "ticker": "UPRO",
-      "date": "2025-11-28",
-      "price": 117.13,
-      "z_score": 1.54,
+      "date": "2025-12-01",
+      "price": 115.49,
+      "z_score": 1.25,
       "is_above_sma": true,
-      "sma_price": 91.95,
+      "sma_price": 92.04,
       "garch_signal": "持有",
       "sma_signal": "持有",
       "final_decision": "持有 100%",
@@ -16,11 +16,11 @@
     },
     {
       "ticker": "EURL",
-      "date": "2025-11-28",
-      "price": 37.58,
-      "z_score": 2.02,
+      "date": "2025-12-01",
+      "price": 37.17,
+      "z_score": 1.38,
       "is_above_sma": true,
-      "sma_price": 32.43,
+      "sma_price": 32.48,
       "garch_signal": "持有",
       "sma_signal": "持有",
       "final_decision": "持有 100%",
@@ -29,16 +29,16 @@
     },
     {
       "ticker": "EDC",
-      "date": "2025-11-28",
-      "price": 51.82,
-      "z_score": -0.15,
+      "date": "2025-12-01",
+      "price": 51.69,
+      "z_score": -0.37,
       "is_above_sma": true,
-      "sma_price": 40.01,
-      "garch_signal": "賣出",
+      "sma_price": 40.11,
+      "garch_signal": "持有",
       "sma_signal": "持有",
-      "final_decision": "持有 50%",
+      "final_decision": "持有 100%",
       "thresholds": "GARCH(Exit>1.75, Entry<-0.25)",
-      "trigger_reason": "於 2025-10-14 觸發賣出 (Z=1.99)"
+      "trigger_reason": "於 2025-12-01 觸發買回 (Z=-0.37)"
     }
   ]
 }
