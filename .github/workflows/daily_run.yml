@@ -37,4 +37,8 @@ jobs:
         git add signals.json
         # 只有當 signals.json 有變動時才提交
         git commit -m "Update quant signals" || exit 0
+        
+        # === 關鍵修正：先拉取最新進度，再推送 ===
+        git pull --rebase origin main
+        
         git push
