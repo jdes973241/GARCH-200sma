@@ -1,5 +1,5 @@
 {
-  "updated_at": "2025-11-30 22:40:21 UTC",
+  "updated_at": "2025-12-01 02:43:08 UTC",
   "data": [
     {
       "ticker": "UPRO",
@@ -11,7 +11,8 @@
       "garch_signal": "持有",
       "sma_signal": "持有",
       "final_decision": "持有 100%",
-      "thresholds": "GARCH(Exit>2.0, Entry<1.0)"
+      "thresholds": "GARCH(Exit>2.0, Entry<1.0)",
+      "trigger_reason": "於 2025-05-01 觸發買回 (Z=0.93)"
     },
     {
       "ticker": "EURL",
@@ -23,7 +24,8 @@
       "garch_signal": "持有",
       "sma_signal": "持有",
       "final_decision": "持有 100%",
-      "thresholds": "GARCH(Exit>3.75, Entry<1.75)"
+      "thresholds": "GARCH(Exit>3.75, Entry<1.75)",
+      "trigger_reason": "於 2025-04-22 觸發買回 (Z=1.64)"
     },
     {
       "ticker": "EDC",
@@ -35,7 +37,8 @@
       "garch_signal": "賣出",
       "sma_signal": "持有",
       "final_decision": "持有 50%",
-      "thresholds": "GARCH(Exit>1.75, Entry<-0.25)"
+      "thresholds": "GARCH(Exit>1.75, Entry<-0.25)",
+      "trigger_reason": "於 2025-10-14 觸發賣出 (Z=1.99)"
     }
   ]
 }
