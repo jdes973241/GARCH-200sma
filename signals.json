@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-02 22:32:13 UTC",
+  "updated_at": "2026-04-03 22:34:51 UTC",
   "data": [
     {
       "ticker": "UPRO",
@@ -20,7 +20,7 @@
       "price": 38.98,
       "z_score": 2.66,
       "is_above_sma": true,
-      "sma_price": 38.41,
+      "sma_price": 38.4,
       "garch_signal": "賣出",
       "sma_signal": "持有",
       "final_decision": "持有 50%",
