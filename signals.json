@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-04-09 22:41:28 UTC",
+  "updated_at": "2026-04-10 22:38:35 UTC",
   "data": [
     {
       "ticker": "UPRO",
-      "date": "2026-04-09",
-      "price": 110.36,
-      "z_score": 2.94,
+      "date": "2026-04-10",
+      "price": 110.01,
+      "z_score": 2.46,
       "is_above_sma": true,
-      "sma_price": 108.04,
+      "sma_price": 108.16,
       "garch_signal": "賣出",
       "sma_signal": "持有",
       "final_decision": "持有 50%",
@@ -16,11 +16,11 @@
     },
     {
       "ticker": "EURL",
-      "date": "2026-04-09",
-      "price": 43.79,
-      "z_score": 3.36,
+      "date": "2026-04-10",
+      "price": 44.34,
+      "z_score": 2.71,
       "is_above_sma": true,
-      "sma_price": 38.62,
+      "sma_price": 38.67,
       "garch_signal": "持有",
       "sma_signal": "持有",
       "final_decision": "持有 100%",
@@ -29,16 +29,16 @@
     },
     {
       "ticker": "EDC",
-      "date": "2026-04-09",
-      "price": 66.24,
-      "z_score": 3.05,
+      "date": "2026-04-10",
+      "price": 67.15,
+      "z_score": 2.52,
       "is_above_sma": true,
-      "sma_price": 53.26,
+      "sma_price": 53.4,
       "garch_signal": "賣出",
       "sma_signal": "持有",
       "final_decision": "持有 50%",
       "thresholds": "GARCH(Exit>1.75, Entry<-0.25)",
-      "trigger_reason": "於 2026-02-09 觸發賣出 (Z=1.99)"
+      "trigger_reason": "於 2026-02-09 觸發賣出 (Z=1.98)"
     }
   ]
 }
