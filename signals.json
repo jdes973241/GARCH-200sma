@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18 23:45:52 UTC",
+  "updated_at": "2026-06-19 22:58:36 UTC",
   "data": [
     {
       "ticker": "UPRO",
@@ -17,8 +17,8 @@
     {
       "ticker": "EURL",
       "date": "2026-06-18",
-      "price": 46.46,
-      "z_score": 0.36,
+      "price": 46.04,
+      "z_score": 0.51,
       "is_above_sma": true,
       "sma_price": 41.25,
       "garch_signal": "持有",
