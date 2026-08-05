@@ -1,26 +1,26 @@
 {
-  "updated_at": "2026-08-04 23:03:31 UTC",
+  "updated_at": "2026-08-05 22:59:04 UTC",
   "data": [
     {
       "ticker": "UPRO",
-      "date": "2026-08-04",
-      "price": 154.14,
-      "z_score": 0.55,
+      "date": "2026-08-05",
+      "price": 153.24,
+      "z_score": 1.13,
       "is_above_sma": true,
-      "sma_price": 122.46,
+      "sma_price": 122.69,
       "garch_signal": "持有",
       "sma_signal": "持有",
       "final_decision": "持有 100%",
       "thresholds": "GARCH(Exit>2.0, Entry<1.0)",
-      "trigger_reason": "於 2026-04-21 觸發買回 (Z=0.82)"
+      "trigger_reason": "於 2026-04-21 觸發買回 (Z=0.83)"
     },
     {
       "ticker": "EURL",
-      "date": "2026-08-04",
-      "price": 50.81,
-      "z_score": -0.64,
+      "date": "2026-08-05",
+      "price": 50.82,
+      "z_score": -0.6,
       "is_above_sma": true,
-      "sma_price": 42.57,
+      "sma_price": 42.64,
       "garch_signal": "持有",
       "sma_signal": "持有",
       "final_decision": "持有 100%",
@@ -29,16 +29,16 @@
     },
     {
       "ticker": "EDC",
-      "date": "2026-08-04",
-      "price": 76.72,
-      "z_score": 0.2,
+      "date": "2026-08-05",
+      "price": 75.82,
+      "z_score": 0.34,
       "is_above_sma": true,
-      "sma_price": 68.04,
+      "sma_price": 68.16,
       "garch_signal": "賣出",
       "sma_signal": "持有",
       "final_decision": "持有 50%",
       "thresholds": "GARCH(Exit>1.75, Entry<-0.25)",
-      "trigger_reason": "於 2026-02-09 觸發賣出 (Z=1.85)"
+      "trigger_reason": "於 2026-02-09 觸發賣出 (Z=1.86)"
     }
   ]
 }
