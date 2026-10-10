@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-10-09 01:46:05 UTC",
+  "updated_at": "2026-10-10 01:32:43 UTC",
   "data": [
     {
       "ticker": "UPRO",
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "price": 153.13,
       "z_score": -1.2,
       "is_above_sma": true,
-      "sma_price": 130.84,
+      "sma_price": 131.02,
       "garch_signal": "持有",
       "sma_signal": "持有",
       "final_decision": "持有 100%",
@@ -16,7 +16,7 @@
     },
     {
       "ticker": "EURL",
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "price": 39.98,
       "z_score": -0.28,
       "is_above_sma": false,
@@ -29,14 +29,14 @@
     },
     {
       "ticker": "EDC",
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "price": 73.97,
       "z_score": -1.33,
-      "is_above_sma": true,
-      "sma_price": 73.95,
+      "is_above_sma": false,
+      "sma_price": 74.06,
       "garch_signal": "持有",
-      "sma_signal": "持有",
-      "final_decision": "持有 100%",
+      "sma_signal": "賣出",
+      "final_decision": "持有 50%",
       "thresholds": "GARCH(Exit>1.75, Entry<-0.25)",
       "trigger_reason": "於 2026-08-10 觸發買回 (Z=-0.33)"
     }
